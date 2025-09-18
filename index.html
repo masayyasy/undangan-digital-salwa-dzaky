@@ -174,7 +174,7 @@
 
     <!-- Splash Screen -->
     <div id="splash" class="page-splash flex flex-col items-center justify-center">
-        <div class="splash-bg" style="background-image:url('ebru.jpg');"></div>
+        <div class="splash-bg" style="background-image:url('background.png');"></div>
         <div class="ornament splash-bottom-left"><img src="pink.png" alt="Ornamen Kiri Bawah"></div>
         <div class="ornament splash-bottom-right"><img src="pink1.png" alt="Ornamen Kanan Bawah"></div>
 
@@ -193,23 +193,50 @@
     <div id="main-content">
 
         <!-- Halaman 1 -->
-        <div id="page-1" class="page-section">
-            <div class="splash-bg" style="background-image:url('ebru.jpg');"></div>
-            <div class="ornament splash-bottom-left"><img src="pink.png" alt="Ornamen Kiri Bawah"></div>
-            <div class="ornament splash-bottom-right"><img src="pink1.png" alt="Ornamen Kanan Bawah"></div>
+<div id="page-1" class="page-section relative bg-cream overflow-hidden">
+    <div class="splash-bg" style="background-image:url('background.png');"></div>
+    
+        <div class="ornament splash-bottom-left"><img src="pink.png" alt="Ornamen Kiri Bawah"></div>
+        <div class="ornament splash-bottom-right"><img src="pink1.png" alt="Ornamen Kanan Bawah"></div>
 
-            <div class="relative z-10 p-4 fade-in-on-scroll flex flex-col items-center flex-grow justify-center">
-                <h3 class="text-lg tracking-widest text-purple mb-2">WEDDING ANNOUNCEMENT</h3>
-                <h1 class="great-vibes text-7xl text-gold">Salwa & Dzaky</h1>
-                <p class="text-lg mt-4 leading-relaxed font-semibold">Dengan penuh rasa syukur dan kebahagiaan,<br>kami mengundang Yth. <span class="guest-name-placeholder">Tamu Undangan</span><br>untuk hadir dalam acara pernikahan kami.</p>
-                <div class="mt-8 text-center">
-                    <p class="text-xl text-purple">Save the Date</p>
-                    <p class="font-bold text-lg mt-2">Minggu, 19 Oktober 2025</p>
-                    <p class="text-sm mt-1">16.00 – 21.00 WIB</p>
-                    <p class="text-sm mt-1 leading-snug">Bale Asri Function House,<br>Jagakarsa, Jakarta Selatan</p>
-                </div>
-            </div>
-        </div>
+    <!-- Konten utama -->
+    <!-- Parent harus tinggi penuh dan relative -->
+<div class="relative z-10 w-full h-screen px-8">
+
+  <!-- Bagian atas kanan -->
+  <div class="absolute top-8 right-8 max-w-lg text-right">
+      <!-- Basmalah -->
+      <p class="text-green-800 text-2xl font-amiri mb-2">
+        بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+      </p>
+
+      <!-- The Wedding of -->
+      <p class="uppercase tracking-widest text-sm text-sage font-semibold">The Wedding of</p>
+
+      <!-- Nama -->
+      <h1 class="great-vibes text-6xl md:text-7xl text-purple mt-2">Salwa & Dzaky</h1>
+
+      <!-- Teks undangan -->
+      <p class="text-base mt-6 leading-relaxed font-medium">
+        Dengan penuh rasa syukur dan kebahagiaan,<br>
+        kami mengundang Yth. <span class="guest-name-placeholder">Tamu Undangan</span><br>
+        untuk hadir dalam acara pernikahan kami.
+      </p>
+  </div>
+
+  <!-- Bagian bawah kiri -->
+  <div class="absolute top-[600px] left-8 text-left">
+    <p class="uppercase text-xs tracking-widest text-sage font-semibold">Save the Date</p>
+    <p class="text-4xl font-bold text-purple">19</p>
+    <p class="uppercase text-xs font-semibold">Minggu, Oktober</p>
+    <p class="text-xs">16.00 – 21.00 WIB</p>
+    <p class="text-xs mt-1">Bale Asri Function House</p>
+</div>
+
+</div>
+
+</div>
+
 
         <!-- Halaman 2: Ayat Suci Al-Quran -->
         <div id="page-2" class="page-section">
