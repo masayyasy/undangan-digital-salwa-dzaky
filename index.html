@@ -175,24 +175,52 @@
         .fade-in-on-scroll.in-view > *:nth-child(7) { transition-delay: 1.4s; }
         .fade-in-on-scroll.in-view > *:nth-child(8) { transition-delay: 1.6s; }
         .fade-in-on-scroll.in-view > *:nth-child(9) { transition-delay: 1.8s; }
+        .gallery-section {
+    text-align: center;
+    margin-top: 20px;
+  }
 
-        .qr-container img {
-    width: 180px; /* atur ukuran QR */
-    margin: 0 auto;
+  .qr-container img {
+    width: 180px;   /* bisa disesuaikan */
+    max-width: 40vw;
+    margin: 0 auto 24px;
+    display: block;
   }
 
   .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 16px;
-    max-width: 800px;
+    grid-template-columns: repeat(5, 1fr); /* selalu 5 kolom */
+    gap: 12px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 
   .gallery-item img {
     width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 120px; /* biar pas 5 gambar */
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Responsif di HP */
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(3, 1fr); /* 3 kolom di tablet/HP */
+    }
+    .gallery-item img {
+      max-width: 90px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr); /* 2 kolom di HP kecil */
+    }
+    .gallery-item img {
+      max-width: 80px;
+    }
   }
 </style>
 
@@ -210,8 +238,10 @@
             <div class="flex flex-col items-center flex-grow justify-center">
                 <h3 class="text-lg tracking-widest text-purple mb-2">THE WEDDING OF</h3>
                 <h1 class="great-vibes text-7xl text-gold">Salwa & Dzaky</h1>
-                <p class="text-2xl text-purple mt-2">19 • 10 • 2025</p>
-                <p class="text-xl text-purple mt-4">Yth. <span class="guest-name-placeholder">Tamu Undangan</span></p>
+                <br>
+                <br>
+                <br>
+                <p class="text-l text-purple mt-2">19 • 10 • 2025</p>
             </div>
             <button onclick="toggleMainContent()" class="great-vibes font-bold text-xl rounded-full border border-gold text-gold py-2 px-6">Buka Undangan</button>
         </div>
