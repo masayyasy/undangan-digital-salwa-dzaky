@@ -96,6 +96,14 @@
             opacity: 1;
             animation: dropIn 1s ease-out forwards 0.2s, floating 10s ease-in-out infinite 1s;
         }
+        .ornament.splash-bottom-pong {
+            top: -20px;
+            left: -200px;
+            width: 200px;
+            height: 200px;
+            opacity: 1;
+            animation: dropIn 1s ease-out forwards 0.2s, floating 10s ease-in-out infinite 1s;
+        }
         .ornament.splash-bottom-acara {
             top: -1px;
             left: -100px;
@@ -168,6 +176,26 @@
         .fade-in-on-scroll.in-view > *:nth-child(8) { transition-delay: 1.6s; }
         .fade-in-on-scroll.in-view > *:nth-child(9) { transition-delay: 1.8s; }
 
+        .qr-container img {
+    width: 180px; /* atur ukuran QR */
+    margin: 0 auto;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+</style>
+
     </style>
 </head>
 <body>
@@ -218,10 +246,10 @@
       <p class="uppercase tracking-widest text-sm text-sage font-semibold">The Wedding of</p>
 
       <!-- Nama -->
-      <h1 class="great-vibes text-6xl md:text-7xl text-purple mt-2">Salwa & Dzaky</h1>
+      <h1 class="great-vibes text-6xl md:text-7xl text-purple mt-2">Salwa & Dzaky</h1><br><br>
 
       <!-- Teks undangan -->
-      <p class="text-sm mt-6 leading-relaxed font-medium">
+      <p class="text tracking-widest text-sm text-sage font">
         Dengan penuh rasa syukur dan kebahagiaan,<br>
         kami mengundang Yth. <span class="guest-name-placeholder">Tamu Undangan</span><br>
         untuk hadir dalam acara pernikahan kami.
@@ -245,9 +273,9 @@
         <div id="page-2" class="page-section">
             <div class="splash-bg" style="background-image:url('hai.png');"></div>
             <div class="relative z-10 p-4 fade-in-on-scroll">
-                <h2 class="great-vibes text-8xl text-gold">SZ</h2>
-                <h2 class="uppercase text-xl text-purple font-bold">Doa Pernikahan</h2>
-                <p class="text-base mt-4 leading-relaxed ">Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.</p>
+                <h2 class="great-vibes text-8xl text-purple">SZ</h2>
+                <h2 class="uppercase text-xl text-gold font-bold">Doa Pernikahan</h2>
+                <p class="uppercase tracking-widest text-sm text-sage font">Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.</p>
                 <p class="text-sm mt-4 italic font-semibold text-gray-500">Q.S. Ar-Rum: 21</p>
             </div>
         </div>
@@ -283,10 +311,18 @@
             <div class="splash-bg" style="background-image:url('ho.png');"></div>
             <div class="ornament splash-bottom-acara"><img src="pink3.png" alt="Ornamen Kiri Bawah"></div>
             <div class="relative z-10 p-4 fade-in-on-scroll">
-                <h2 class="text-l text-lilac font-bold">Insya Allah akan diselenggarakan pada:</h2>
-                <p class="text-base mt-8 font-bold">Minggu, 19 Oktober 2025</p>
                 <br>
-                <div class="mt-2 text-base font-semibold">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2 class="text-xs text-lilac font-bold">Insya Allah akan diselenggarakan pada:</h2>
+                <br>
+                <br>
+                <p class="text-sm mt-8 font-bold">Minggu, 19 Oktober 2025</p>
+                <br>
+                <div class="mt-2 text-xs font-semibold">
                     <p>16.00 – 17.00 WIB • Akad Nikah</p>
                     <p>17.00 – 21.00 WIB • Resepsi</p>
                 </div>
@@ -309,17 +345,17 @@
 
         <!-- Halaman 5: Dresscode & Adab -->
         <div id="page-5" class="page-section">
-            <div class="splash-bg" style="background-image:url('background.png');"></div>
+            <div class="splash-bg" style="background-image:url('heh.png');"></div>
             <div class="relative z-10 p-4 fade-in-on-scroll">
-                <h2 class="great-vibes text-4xl text-lilac font-bold mb-4">Dresscode & Adab</h2>
+                <h2 class="great-vibes text-4xl text-purple font-bold mb-4">Dresscode & Adab</h2>
                 <div class="w-full text-center max-w-sm mx-auto">
-                    <h3 class="font-bold text-xl text-lilac">👗 Dresscode:</h3>
-                    <p class="text-base mt-2 leading-relaxed font-semibold">
-                        Picnic Earth Tone<br>
-                        (tema busana bernuansa alami, warna-warna bumi seperti krem, cokelat, hijau, sage, lilac lembut, atau putih)
+                    <h3 class="font-bold text-l text-lilac">🌷 Tema Busana: Picnic Earth Tone</h3>
+                    <p class="text-xs mt-2 leading-relaxed font-semibold">
+ Bernuansa alami dengan warna-warna bumi seperti krem, cokelat, hijau, sage, lilac lembut, atau putih. <br><br>
+📍 Catatan: Karena pesta diadakan di taman dengan konsep piknik, tamu dianjurkan mengenakan pakaian yang nyaman dan mudah bergerak agar tetap santai serta menikmati suasana.
                     </p>
-                    <h3 class="font-bold text-xl text-sage mt-8">📜 Catatan Adab:</h3>
-                    <p class="text-base mt-2 leading-relaxed font-semibold">
+                    <h3 class="font-bold text-l text-sage mt-8">📜 Catatan Adab:</h3>
+                    <p class="text-xs mt-2 leading-relaxed font-semibold">
                         Mohon berkenan hadir dengan menjaga kesopanan berpakaian serta tidak membawa pasangan yang belum halal, demi keberkahan acara dan ketentraman bersama.
                     </p>
                 </div>
@@ -327,17 +363,54 @@
         </div>
 
         <!-- Halaman 6: Souvenir -->
-        <div id="page-6" class="page-section">
-            <div class="splash-bg" style="background-image:url('background.png');"></div>
-            <div class="relative z-10 p-4 fade-in-on-scroll">
-                <h2 class="great-vibes text-4xl text-lilac font-bold">Souvenir Pernikahan</h2>
-                <p class="text-base mt-4 leading-relaxed font-semibold">
-                    Kami siapkan tanda kasih untuk para tamu.<br>
-                    Silakan scan barcode berikut untuk penukaran souvenir.
-                </p>
-                <img src="https://placehold.co/300x300/A37B8C/ffffff?text=QR+Code+untuk+Souvenir" alt="QR Code untuk Souvenir" class="w-48 h-48 rounded-lg shadow-md mt-6">
-            </div>
+<div id="page-6" class="page-section">
+  <div class="splash-bg" style="background-image:url('background.png');"></div>
+  <div class="ornament splash-bottom-pong"><img src="pong.png" alt="Ornamen Kiri Bawah"></div>
+  <div class="ornament splash-bottom-right"><img src="pong.png" alt="Ornamen Kanan Bawah"></div>
+
+  <div class="relative z-10 p-4 fade-in-on-scroll text-center">
+    <h2 class="great-vibes text-4xl text-purple font-bold">Souvenir Pernikahan</h2>
+    <p class="text-base mt-4 leading-relaxed text-sage font-semibold">
+      Kami siapkan tanda kasih untuk para tamu.<br>
+      Silakan scan barcode berikut untuk penukaran souvenir.
+    </p>
+
+    <!-- QR Code di tengah -->
+    <div class="qr-container my-6">
+      <img src="qr.png" alt="QR Code">
+    </div>
+
+    <!-- Gallery -->
+    <section class="gallery-section">
+      <div class="gallery">
+        <!-- Gambar 1 -->
+        <div class="gallery-item">
+          <img src="11.png" alt="Gambar 1">
         </div>
+
+        <!-- Gambar 2 -->
+        <div class="gallery-item">
+          <img src="12.png" alt="Gambar 2">
+        </div>
+
+        <!-- Gambar 3 -->
+        <div class="gallery-item">
+          <img src="13.png" alt="Gambar 3">
+        </div>
+
+        <!-- Gambar 4 -->
+        <div class="gallery-item">
+          <img src="14.png" alt="Gambar 4">
+        </div>
+
+        <!-- Gambar 5 -->
+        <div class="gallery-item">
+          <img src="15.png" alt="Gambar 5">
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
         
         <!-- Halaman 7: Wedding Gift Info -->
         <div id="page-7" class="page-section">
