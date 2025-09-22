@@ -483,6 +483,10 @@
             </div>
         </div>
     </div>
+    <!-- Pemutar Lagu -->
+<audio id="bg-music" loop hidden>
+  <source src="maher-zain-for-the-rest-of-my-life.mp3" type="audio/mpeg">
+</audio>
 
     <!-- Indikator Halaman -->
     <div class="scroll-indicator">
@@ -498,6 +502,16 @@
     </div>
 
     <script>
+         const music = document.getElementById("bg-music");
+
+  // Jalanin musik saat pertama kali user interaksi
+  document.addEventListener("click", () => {
+    music.play();
+  }, { once: true });
+
+  document.addEventListener("scroll", () => {
+    music.play();
+  }, { once: true });
         // Mengambil nama tamu dari URL
         const urlParams = new URLSearchParams(window.location.search);
         const guest = urlParams.get('to');
