@@ -460,28 +460,46 @@
         </div>
 
         <!-- Halaman 9: Ucapan -->
-        <div id="page-9" class="page-section">
-            <div class="splash-bg" style="background-image:url('background.png');"></div>
-            <div class="relative z-10 p-4 fade-in-on-scroll w-full max-w-md mx-auto">
-                <h2 class="great-vibes text-4xl text-purple font-bold mb-4">Ucapan & Doa</h2>
-                <form id="ucapanForm" class="space-y-4">
-                    <input type="text" id="nama" placeholder="Nama Anda"
-                        class="w-full border border-sage rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple" required>
-                    <textarea id="ucapan" placeholder="Tulis ucapan dan doa..."
-                        class="w-full border border-sage rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple"
-                        rows="3" required></textarea>
-                    <button type="submit"
-                        class="w-full py-2 px-4 bg-purple text-white rounded-full shadow-lg hover:bg-gold hover:text-dark-purple transition duration-300">
-                        Kirim Ucapan
-                    </button>
-                </form>
+        <!-- Halaman 9: Ucapan & Doa -->
+<div id="page-9" class="page-section">
+  <div class="splash-bg" style="background-image:url('background.png');"></div>
 
-                <!-- List Ucapan -->
-                <div id="listUcapan" class="mt-6 max-h-72 overflow-y-auto border-t border-sage pt-4 text-left">
-                    <p class="text-gray-500 italic">Memuat ucapan...</p>
-                </div>
-            </div>
-        </div>
+  <div class="relative z-10 p-6 fade-in-on-scroll w-full max-w-lg mx-auto text-center">
+    <!-- Judul -->
+    <h2 class="great-vibes text-4xl text-purple font-bold mb-6">Ucapan & Doa</h2>
+
+    <!-- Form Ucapan -->
+    <form id="ucapanForm" class="bg-white/70 p-4 rounded-2xl shadow-md space-y-3">
+      <input 
+        type="text" 
+        id="nama" 
+        name="nama" 
+        placeholder="Nama" 
+        required
+        class="w-full border border-purple/30 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple"
+      >
+      <textarea 
+        id="ucapan" 
+        name="ucapan" 
+        placeholder="Ucapan & Doa..." 
+        required
+        class="w-full border border-purple/30 rounded-lg px-3 py-2 h-24 focus:outline-none focus:ring-2 focus:ring-purple resize-none"
+      ></textarea>
+      <button 
+        type="submit"
+        class="w-full bg-purple text-white py-2 rounded-lg font-semibold hover:bg-purple-700 transition"
+      >
+        Kirim Ucapan
+      </button>
+    </form>
+
+    <!-- List Ucapan -->
+    <div id="listUcapan" class="mt-6 space-y-3 text-left max-h-80 overflow-y-auto">
+      <!-- Ucapan akan ditampilkan di sini -->
+    </div>
+  </div>
+</div>
+
     </div>
     <!-- Pemutar Lagu -->
 <audio id="bg-music" loop hidden>
@@ -556,58 +574,45 @@
             });
             sections.forEach(section => observer.observe(section));
         }
-        const scriptURL = "https://script.google.com/macros/s/AKfycbzVSalcwCdQdD4yz4KZi_zw6OCyCMfjO7AOSMPfiCldsGlQuNEPCHen-YNNw59WMA6E/exec"; // ganti dengan URL Web App Apps Script
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxSaIqy0CBuafBcw3LbqmBEkCJCm1_XqP3CKlpLGYRi881lnJsljrkId87k1hsvHXGC/exec"; // ganti dengan URL web app kamu
+const form = document.getElementById("ucapanForm");
+const listUcapan = document.getElementById("listUcapan");
 
-        const form = document.getElementById("ucapanForm");
-        const listUcapan = document.getElementById("listUcapan");
+// Load ucapan
+function loadUcapan() {
+  fetch(scriptURL)
+    .then(res => res.json())
+    .then(data => {
+      listUcapan.innerHTML = "";
+      if (data.length === 0) {
+        listUcapan.innerHTML = `<p class="text-gray-500 italic">Belum ada ucapan...</p>`;
+        return;
+      }
+      data.reverse().forEach(row => {
+        const div = document.createElement("div");
+        div.className = "p-2 border-b";
+        div.innerHTML = `<p class="font-bold">${row.nama}</p>
+                         <p class="text-sm">${row.ucapan}</p>`;
+        listUcapan.appendChild(div);
+      });
+    })
+    .catch(err => console.error("Gagal load ucapan", err));
+}
 
-        // Load ucapan
-        function loadUcapan() {
-            fetch(scriptURL + "?action=read")
-                .then(res => res.json())
-                .then(data => {
-                    listUcapan.innerHTML = "";
-                    if (data.length === 0) {
-                        listUcapan.innerHTML = `<p class="text-gray-500 italic">Belum ada ucapan...</p>`;
-                        return;
-                    }
-                    data.reverse().forEach(row => {
-                        const div = document.createElement("div");
-                        div.className = "p-2 border-b";
-                        div.innerHTML = `<p class="font-bold">${row.nama}</p>
-                                         <p class="text-sm">${row.ucapan}</p>`;
-                        listUcapan.appendChild(div);
-                    });
-                })
-                .catch(err => {
-                    console.error("Gagal load ucapan", err);
-                    listUcapan.innerHTML = `<p class="text-red-500 italic">Gagal memuat ucapan...</p>`;
-                });
-        }
+loadUcapan();
 
-        loadUcapan();
+// Kirim ucapan
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const formData = new FormData(form);
 
-        // Kirim ucapan
-        form.addEventListener("submit", e => {
-            e.preventDefault();
-            const nama = document.getElementById("nama").value;
-            const ucapan = document.getElementById("ucapan").value;
-
-            fetch(scriptURL, {
-                method: "POST",
-    body: new FormData(form)
-            })
-                .then(res => res.text())
-                .then(() => {
-                    const div = document.createElement("div");
-                    div.className = "p-2 border-b";
-                    div.innerHTML = `<p class="font-bold">${nama}</p>
-                                     <p class="text-sm">${ucapan}</p>`;
-                    listUcapan.prepend(div);
-                    form.reset();
-                })
-                .catch(err => alert("Gagal kirim ucapan: " + err));
-        });
+  fetch(scriptURL, { method: "POST", body: formData })
+    .then(() => {
+      loadUcapan(); // reload dari sheet
+      form.reset();
+    })
+    .catch(err => alert("Gagal kirim ucapan: " + err));
+});
     </script>
 </body>
 </html>
