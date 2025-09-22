@@ -286,10 +286,7 @@
             <div class="splash-bg" style="background-image:url('hai.png');"></div>
             <div class="relative z-10 p-4 fade-in-on-scroll">
                 <h2 class="great-vibes text-8xl text-purple">SZ</h2>
-                <br>
-                <br>
                 <h2 class="uppercase text-xl text-gold font-bold">Doa Pernikahan</h2>
-                <br>
                 <p class="uppercase tracking-widest text-sm text-sage font">Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.</p>
                 <p class="text-sm mt-4 italic font-semibold text-gray-500">Q.S. Ar-Rum: 21</p>
             </div>
@@ -325,7 +322,9 @@
         <div id="page-4" class="page-section">
             <div class="splash-bg" style="background-image:url('ho.png');"></div>
             <div class="ornament splash-bottom-acara"><img src="pink3.png" alt="Ornamen Kiri Bawah"></div>
-            <div class="relative z-10 p-4 fade-in-on-scroll">                
+            <div class="relative z-10 p-4 fade-in-on-scroll">
+                <br>
+                <br>
                 <br>
                 <br>
                 <br>
@@ -333,7 +332,7 @@
                 <h2 class="text-xs text-lilac font-bold">Insya Allah akan diselenggarakan pada:</h2>
                 <br>
                 <br>
-                <p class="text-sm mt-8 text-sage font-bold">Minggu, 19 Oktober 2025</p>
+                <p class="text-sm mt-8 font-bold">Minggu, 19 Oktober 2025</p>
                 <br>
                 <div class="mt-2 text-xs font-semibold">
                     <p>16.00 – 17.00 WIB • Akad Nikah</p>
@@ -342,8 +341,8 @@
                 <p class="text-m mt-4 leading-snug font-semibold text-center">
                     Bale Asri Function House,<br>
                 </p>
-                <p class="text-xs mt-8 text-lillac font-semibold">Jl. Moh. Kahfi 1 Jl. Manggis No.29 Rt 01/04 1, RT.1/RW.4,
-                    Jagakarsa, Kec. Jagakarsa, Kota Jakarta Selatan,
+                <p class="text-xs mt-8 font-semibold">Jl. Moh. Kahfi 1 Jl. Manggis No.29 Rt 01/04 1, RT.1/RW.4,<br>
+                    Jagakarsa, Kec. Jagakarsa, Kota Jakarta Selatan,<br>
                     Daerah Khusus Ibukota Jakarta 12620</p>
                     <br>
                     <br>
@@ -358,7 +357,7 @@
 
         <!-- Halaman 5: Dresscode & Adab -->
         <div id="page-5" class="page-section">
-            <div class="splash-bg" style="background-image:url('heh.png');"></div>
+            <div class="splash-bg" style="background-image:url('background.png');"></div>
             <div class="relative z-10 p-4 fade-in-on-scroll">
                 <h2 class="great-vibes text-4xl text-purple font-bold mb-4">Dresscode & Adab</h2>
                 <div class="w-full text-center max-w-sm mx-auto">
@@ -459,6 +458,30 @@
                 <p class="font-bold text-lg mt-2">19 Oktober 2025</p>
             </div>
         </div>
+
+        <!-- Halaman 9: Ucapan -->
+        <div id="page-9" class="page-section">
+            <div class="splash-bg" style="background-image:url('background.png');"></div>
+            <div class="relative z-10 p-4 fade-in-on-scroll w-full max-w-md mx-auto">
+                <h2 class="great-vibes text-4xl text-purple font-bold mb-4">Ucapan & Doa</h2>
+                <form id="ucapanForm" class="space-y-4">
+                    <input type="text" id="nama" placeholder="Nama Anda"
+                        class="w-full border border-sage rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple" required>
+                    <textarea id="ucapan" placeholder="Tulis ucapan dan doa..."
+                        class="w-full border border-sage rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple"
+                        rows="3" required></textarea>
+                    <button type="submit"
+                        class="w-full py-2 px-4 bg-purple text-white rounded-full shadow-lg hover:bg-gold hover:text-dark-purple transition duration-300">
+                        Kirim Ucapan
+                    </button>
+                </form>
+
+                <!-- List Ucapan -->
+                <div id="listUcapan" class="mt-6 max-h-72 overflow-y-auto border-t border-sage pt-4 text-left">
+                    <p class="text-gray-500 italic">Memuat ucapan...</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Indikator Halaman -->
@@ -471,6 +494,7 @@
         <div id="dot-6" class="dot"></div>
         <div id="dot-7" class="dot"></div>
         <div id="dot-8" class="dot"></div>
+        <div id="dot-9" class="dot"></div>
     </div>
 
     <script>
@@ -518,7 +542,58 @@
             });
             sections.forEach(section => observer.observe(section));
         }
+        const scriptURL = "https://script.google.com/macros/s/AKfycbzVSalcwCdQdD4yz4KZi_zw6OCyCMfjO7AOSMPfiCldsGlQuNEPCHen-YNNw59WMA6E/exec"; // ganti dengan URL Web App Apps Script
+
+        const form = document.getElementById("ucapanForm");
+        const listUcapan = document.getElementById("listUcapan");
+
+        // Load ucapan
+        function loadUcapan() {
+            fetch(scriptURL + "?action=read")
+                .then(res => res.json())
+                .then(data => {
+                    listUcapan.innerHTML = "";
+                    if (data.length === 0) {
+                        listUcapan.innerHTML = `<p class="text-gray-500 italic">Belum ada ucapan...</p>`;
+                        return;
+                    }
+                    data.reverse().forEach(row => {
+                        const div = document.createElement("div");
+                        div.className = "p-2 border-b";
+                        div.innerHTML = `<p class="font-bold">${row.nama}</p>
+                                         <p class="text-sm">${row.ucapan}</p>`;
+                        listUcapan.appendChild(div);
+                    });
+                })
+                .catch(err => {
+                    console.error("Gagal load ucapan", err);
+                    listUcapan.innerHTML = `<p class="text-red-500 italic">Gagal memuat ucapan...</p>`;
+                });
+        }
+
+        loadUcapan();
+
+        // Kirim ucapan
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            const nama = document.getElementById("nama").value;
+            const ucapan = document.getElementById("ucapan").value;
+
+            fetch(scriptURL, {
+                method: "POST",
+    body: new FormData(form)
+            })
+                .then(res => res.text())
+                .then(() => {
+                    const div = document.createElement("div");
+                    div.className = "p-2 border-b";
+                    div.innerHTML = `<p class="font-bold">${nama}</p>
+                                     <p class="text-sm">${ucapan}</p>`;
+                    listUcapan.prepend(div);
+                    form.reset();
+                })
+                .catch(err => alert("Gagal kirim ucapan: " + err));
+        });
     </script>
 </body>
 </html>
-
